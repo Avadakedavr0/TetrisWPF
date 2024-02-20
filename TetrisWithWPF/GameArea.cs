@@ -55,5 +55,40 @@
             }
             return true;
         }
+        // clear the row
+        private void ClearRow(int r)
+        {
+            for (int c = 0; c < Columns; c++)
+            {
+                area[r, c] = 0;
+            }
+        }
+        // then move the row down
+        private void MoveRowDown(int r, int numRows)
+        {
+            for (int c = 0; c < Columns; c++)
+            {
+                area[r + numRows, c] = area[r, c];
+                area[r, c] = 0;
+            }
+        }
+        // next we need to clear the full rows
+        public int ClearFullRows()
+        {
+            int cleared = 0;
+            for (int r = Rows - 1; r >= 0; r--)
+            {
+                if (IsRowFull(r))
+                {
+                    ClearRow(r);
+                    cleared++;
+                }
+                else if (cleared > 0)
+                {
+                    MoveRowDown(r, cleared);
+                }
+            }
+            return cleared;
+        }
     }
 }
