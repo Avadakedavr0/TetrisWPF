@@ -13,7 +13,7 @@
             //horizontyal shape pointing left
             new PositionOffBlocks[] { new(2,0), new(2,1), new(2,2), new(2,3) },
             // vertical shape pointing up
-            new PositionOffBlocks[] { new(0,1), new(1,1), new(2,1), new(3,1) },
+            new PositionOffBlocks[] { new(0,1), new(1,1), new(2,1), new(3,1) }
         };
 
         // uniquely identifies the I block type
