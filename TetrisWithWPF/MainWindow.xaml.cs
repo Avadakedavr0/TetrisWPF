@@ -62,7 +62,7 @@ namespace TetrisWithWPF
                         Height = cellSize
                     };
 
-                    Canvas.SetTop(imageControl, (r - 2) * cellSize);
+                    Canvas.SetTop(imageControl, (r - 2) * cellSize + 15); // to make you see that the top row actually is full when it is game over
                     Canvas.SetLeft(imageControl, c * cellSize);
                     GameCanvas.Children.Add(imageControl);
                     localImageControls[r, c] = imageControl;
@@ -91,10 +91,17 @@ namespace TetrisWithWPF
             }
         }
 
+        private void DrawNextBlock(QueueBlocks queueBlocks)
+        {
+            Blocks next = queueBlocks.NextBlock;
+            Next.Source = blockImages[next.Id];
+        }
+
         private void Draw(StateOfGame stateOfGame)
         {
             DrawGrid(stateOfGame.GameGrid);
             DrawBlock(stateOfGame.CurrentBlock);
+            DrawNextBlock(stateOfGame.QueueBlocks);
         }
 
         private async Task GameLoop()

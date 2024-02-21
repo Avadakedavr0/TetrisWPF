@@ -36,7 +36,7 @@
                     Grid.Column="1"
                     Background="#CC000000"
                     Width="250"
-                    Height="500"
+                    Height="510"
                     ClipToBounds="True"
                     Loaded="GameCanvas_Loaded"/>
         </Viewbox>
