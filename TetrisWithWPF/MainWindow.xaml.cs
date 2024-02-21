@@ -20,6 +20,17 @@ namespace TetrisWithWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly ImageSource[] tileImages = new ImageSource[]
+        {
+            new BitmapImage(new Uri("Assets/TileEmpty.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/Tile1.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/Tile2.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/Tile3.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/Tile4.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/Tile5.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/Tile6.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/Tile7.png", UriKind.Relative)),
+        };
         public MainWindow()
         {
             InitializeComponent();
