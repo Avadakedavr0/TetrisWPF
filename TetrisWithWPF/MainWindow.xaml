@@ -5,7 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TetrisWithWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Tetris-Space" Height="600" Width="800"
+        MinHeight="600"
+        MinWidth="600"
+        Foreground="Snow"
+        FontFamily="Andale mono"
+        FontSize="30"
+        KeyDown="Window_KeyDown">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -47,7 +53,7 @@
                     HorizontalAlignment="Right">
             <TextBlock Text="Hold Block"
                        TextAlignment="Center"/>
-            
+
             <Image x:Name="HoldImage"
                        Margin="20"
                        Width="125"/>
@@ -89,5 +95,5 @@
                         Click="PlayAgain_Click"/>
             </StackPanel>
         </Grid>
-     </Grid>
+    </Grid>
 </Window>
