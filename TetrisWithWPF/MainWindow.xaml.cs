@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace TetrisWithWPF
 {
@@ -29,8 +20,21 @@ namespace TetrisWithWPF
             new BitmapImage(new Uri("Assets/Tile4.png", UriKind.Relative)),
             new BitmapImage(new Uri("Assets/Tile5.png", UriKind.Relative)),
             new BitmapImage(new Uri("Assets/Tile6.png", UriKind.Relative)),
-            new BitmapImage(new Uri("Assets/Tile7.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/Tile7.png", UriKind.Relative))
         };
+
+        private readonly ImageSource[] blockImages = new ImageSource[]
+        {
+            new BitmapImage(new Uri("Assets/EmptyBlock.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/IBlock.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/JBlock.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/LBlock.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/OBlock.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/SBlock.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/TBlock.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/ZBlock.png", UriKind.Relative))
+        };
+
         public MainWindow()
         {
             InitializeComponent();

@@ -34,7 +34,7 @@
             <Canvas x:Name="GameCanvas"
                     Grid.Row="1"
                     Grid.Column="1"
-                    Background="DarkCyan"
+                    Background="#CC000000"
                     Width="250"
                     Height="500"
                     ClipToBounds="True"
