@@ -78,6 +78,7 @@ namespace TetrisWithWPF
                 for (int c = 0; c < grid.Columns; c++)
                 {
                     int id = grid[r, c];
+                    imageControls[r, c].Opacity = 1; // reset it to original
                     imageControls[r, c].Source = tileImages[id];
                 }
             }
@@ -87,6 +88,7 @@ namespace TetrisWithWPF
         {
             foreach (PositionOffBlocks p in blocks.TilePositions())
             {
+                imageControls[p.Row, p.Column].Opacity = 1; // reset it to original
                 imageControls[p.Row, p.Column].Source = tileImages[blocks.Id];
             }
         }
@@ -97,9 +99,20 @@ namespace TetrisWithWPF
             Next.Source = blockImages[next.Id];
         }
 
+        private void DrawGhostBlock(Blocks blocks)
+        {
+            int dropDistance = stateOfGame.BlockDropDistance();
+            foreach (PositionOffBlocks p in blocks.TilePositions())
+            {
+                imageControls[p.Row + dropDistance, p.Column].Opacity = 0.2;
+                imageControls[p.Row + dropDistance, p.Column].Source = tileImages[blocks.Id];
+            }
+        }
+
         private void Draw(StateOfGame stateOfGame)
         {
             DrawGrid(stateOfGame.GameGrid);
+            DrawGhostBlock(stateOfGame.CurrentBlock);
             DrawBlock(stateOfGame.CurrentBlock);
             DrawNextBlock(stateOfGame.QueueBlocks);
             DrawHeldBlock(stateOfGame.HeldBlocks);
