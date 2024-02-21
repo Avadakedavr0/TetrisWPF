@@ -18,7 +18,7 @@
         }
 
         // represents the game area where the blocks are placed
-        public GameArea GameArea { get; }
+        public GameGrid GameGrid { get; }
         // manages the queue of blocks that will come next in the game
         public QueueBlocks QueueBlocks { get; }
         // flag indicating whether the game is over
@@ -27,7 +27,7 @@
         // constructor initializes the game state, creating the game area and the queue of blocks
         public StateOfGame()
         {
-            GameArea = new GameArea(22, 10); // standard Tetris game area size
+            GameGrid = new GameGrid(22, 10); // standard Tetris game area size
             QueueBlocks = new QueueBlocks(); // initializes the queue of blocks
             CurrentBlock = QueueBlocks.GetAndUpdate(); // sets the current block to the next block from the queue
         }
@@ -38,7 +38,7 @@
             foreach (PositionOffBlocks p in CurrentBlock.TilePositions())
             {
                 // if any part of the block is outside the game area or collides with existing blocks, it does not fit
-                if (!GameArea.IsEmptyCell(p.Row, p.Column))
+                if (!GameGrid.IsEmptyCell(p.Row, p.Column))
                 {
                     return false;
                 }
@@ -94,7 +94,7 @@
         // determines if the game is over which occurs if the top two rows of the game area are not empty
         private bool IsGameOver()
         {
-            return !(GameArea.IsRowEmpty(0) && GameArea.IsRowEmpty(1));
+            return !(GameGrid.IsRowEmpty(0) && GameGrid.IsRowEmpty(1));
         }
 
         // places the current block into the game area and updates the game state
@@ -103,10 +103,10 @@
             foreach (PositionOffBlocks p in currentBlock.TilePositions())
             {
                 // fills the game area cells with the block's Id to indicate they are occupied
-                GameArea[p.Row, p.Column] = currentBlock.Id;
+                GameGrid[p.Row, p.Column] = currentBlock.Id;
             }
             // clears any rows that are now full
-            GameArea.ClearFullRows();
+            GameGrid.ClearFullRows();
 
             // checks if the game is over after placing the block
             if (IsGameOver())

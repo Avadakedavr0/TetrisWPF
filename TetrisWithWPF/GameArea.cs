@@ -1,26 +1,26 @@
 ﻿namespace TetrisWithWPF
 {
-    public class GameArea
+    public class GameGrid
     {
         // setting up game area
-        private readonly int[,] area;
+        private readonly int[,] grid;
         public int Rows { get; }
         public int Columns { get; }
         public int this[int r, int c]
         {
-            get => area[r, c];
-            set => area[r, c] = value;
+            get => grid[r, c];
+            set => grid[r, c] = value;
         }
 
         // setting up rows and columns
-        public GameArea(int rows, int columns)
+        public GameGrid(int rows, int columns)
         {
             Rows = rows;
             Columns = columns;
-            area = new int[rows, columns];
+            grid = new int[rows, columns];
         }
 
-        public bool isInside(int r, int c)
+        public bool IsInside(int r, int c)
         {
             return r >= 0 && r < Rows && c >= 0 && c < Columns;
         }
@@ -28,7 +28,8 @@
         // check if the cell is empty or not
         public bool IsEmptyCell(int r, int c)
         {
-            return IsEmptyCell(r, c) && area[r, c] == 0;
+            return IsInside(r, c) && grid[r, c] == 0;
+
         }
 
         // next check if row is full
@@ -36,7 +37,7 @@
         {
             for (int c = 0; c < Columns; c++)
             {
-                if (area[r, c] == 0)
+                if (grid[r, c] == 0)
                 {
                     return false;
                 }
@@ -48,7 +49,7 @@
         {
             for (int c = 0; c < Columns; c++)
             {
-                if (area[r, c] != 0)
+                if (grid[r, c] != 0)
                 {
                     return false;
                 }
@@ -60,7 +61,7 @@
         {
             for (int c = 0; c < Columns; c++)
             {
-                area[r, c] = 0;
+                grid[r, c] = 0;
             }
         }
         // then move the row down
@@ -68,8 +69,8 @@
         {
             for (int c = 0; c < Columns; c++)
             {
-                area[r + numRows, c] = area[r, c];
-                area[r, c] = 0;
+                grid[r + numRows, c] = grid[r, c];
+                grid[r, c] = 0;
             }
         }
         // next we need to clear the full rows

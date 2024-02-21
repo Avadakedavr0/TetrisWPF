@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -35,12 +37,117 @@ namespace TetrisWithWPF
             new BitmapImage(new Uri("Assets/ZBlock.png", UriKind.Relative))
         };
 
+        private readonly Image[,] imageControls; // 2d array
+
+        private StateOfGame stateOfGame = new StateOfGame();
+
         public MainWindow()
         {
             InitializeComponent();
+            imageControls = SetupGameCanvas(stateOfGame.GameGrid);
+        }
+
+        private Image[,] SetupGameCanvas(GameGrid grid)
+        {
+            Image[,] localImageControls = new Image[grid.Rows, grid.Columns];
+            int cellSize = 25;
+
+            for (int r = 0; r < grid.Rows; r++)
+            {
+                for (int c = 0; c < grid.Columns; c++)
+                {
+                    Image imageControl = new Image
+                    {
+                        Width = cellSize,
+                        Height = cellSize
+                    };
+
+                    Canvas.SetTop(imageControl, (r - 2) * cellSize);
+                    Canvas.SetLeft(imageControl, c * cellSize);
+                    GameCanvas.Children.Add(imageControl);
+                    localImageControls[r, c] = imageControl;
+                }
+            }
+            return localImageControls;
+        }
+
+        private void DrawGrid(GameGrid grid)
+        {
+            for (int r = 0; r < grid.Rows; r++)
+            {
+                for (int c = 0; c < grid.Columns; c++)
+                {
+                    int id = grid[r, c];
+                    imageControls[r, c].Source = tileImages[id];
+                }
+            }
+        }
+
+        private void DrawBlock(Blocks blocks)
+        {
+            foreach (PositionOffBlocks p in blocks.TilePositions())
+            {
+                imageControls[p.Row, p.Column].Source = tileImages[blocks.Id];
+            }
+        }
+
+        private void Draw(StateOfGame stateOfGame)
+        {
+            DrawGrid(stateOfGame.GameGrid);
+            DrawBlock(stateOfGame.CurrentBlock);
+        }
+
+        private async Task GameLoop()
+        {
+            Draw(stateOfGame);
+
+            while (!stateOfGame.GameOver)
+            {
+                await Task.Delay(500);
+                stateOfGame.MoveBlockDown();
+                Draw(stateOfGame);
+            }
+
+            GameOver.Visibility = Visibility.Visible;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (stateOfGame.GameOver)
+            {
+                return;
+            }
+            switch (e.Key)
+            {
+                case Key.Left:
+                    stateOfGame.MoveBlockLeft();
+                    break;
+                case Key.Right:
+                    stateOfGame.MoveBlockRight();
+                    break;
+                case Key.Down:
+                    stateOfGame.MoveBlockDown();
+                    break;
+                case Key.Up:
+                    stateOfGame.RotateBlockCW();
+                    break;
+                case Key.Z:
+                    stateOfGame.RotateBlockCCW();
+                    break;
+                default:
+                    return;
+            }
+
+            Draw(stateOfGame);
+
+        }
+
+        private async void GameCanvas_Loaded(object sender, RoutedEventArgs e)
+        {
+            await GameLoop();
+        }
+
+        private void PlayAgain_Click(object sender, RoutedEventArgs e)
         {
 
         }

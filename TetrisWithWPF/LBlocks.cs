@@ -12,7 +12,7 @@ namespace TetrisWithWPF
         // defines the shapes of the I block in its four rotation states
         public readonly PositionOffBlocks[][] tiles = new PositionOffBlocks[][]
         {
-            new PositionOffBlocks[] { new(1,0), new(1,1), new(1,2), new(0,2) },
+            new PositionOffBlocks[] { new(0,2), new(1,0), new(1,1), new(1,2) },
             new PositionOffBlocks[] { new(0,1), new(1,1), new(2,1), new(2,2) },
             new PositionOffBlocks[] { new(1,0), new(1,1), new(1,2), new(2,0) },
             new PositionOffBlocks[] { new(0,0), new(0,1), new(1,1), new(2,1) }
@@ -22,7 +22,7 @@ namespace TetrisWithWPF
         public override int Id => 3;
 
         // sets the starting offset for the L block, positioned at the top and center of the area
-        protected override PositionOffBlocks StartOffset => new PositionOffBlocks(-1, 3);
+        protected override PositionOffBlocks StartOffset => new PositionOffBlocks(0, 3);
 
         // overrides the tiles prop to provide specific rotation shapes for the L block
         protected override PositionOffBlocks[][] Tiles => tiles;

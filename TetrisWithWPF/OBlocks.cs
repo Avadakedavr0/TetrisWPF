@@ -13,8 +13,7 @@ namespace TetrisWithWPF
         public readonly PositionOffBlocks[][] tiles = new PositionOffBlocks[][]
         {
             // since this is a square, we can just use 1 rotation state
-            new PositionOffBlocks[] { new(0,0), new(0,1), new(1,0), new(1,1) },
-
+            new PositionOffBlocks[] { new(0,0), new(0,1), new(1,0), new(1,1) }
         };
 
         // uniquely identifies the O block type

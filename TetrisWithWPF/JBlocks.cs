@@ -22,7 +22,7 @@ namespace TetrisWithWPF
         public override int Id => 2;
 
         // sets the starting offset for the J block, positioned at the top and center of the area
-        protected override PositionOffBlocks StartOffset => new PositionOffBlocks(-1, 3);
+        protected override PositionOffBlocks StartOffset => new PositionOffBlocks(0, 3);
 
         // overrides the tiles prop to provide specific rotation shapes for the J block
         protected override PositionOffBlocks[][] Tiles => tiles;
