@@ -172,5 +172,32 @@ namespace TetrisWithWPF
                 PlaceBlock(); // place the block in its current position because it can't move down further
             }
         }
+
+        private int TileInstantDrop(PositionOffBlocks p)
+        {
+            int drop = 0;
+            while (GameGrid.IsEmptyCell(p.Row + drop + 1, p.Column))
+            {
+                drop++;
+            }
+            return drop;
+        }
+
+        public int BlockDropDistance()
+        {
+            int drop = GameGrid.Rows;
+
+            foreach (PositionOffBlocks p in CurrentBlock.TilePositions())
+            {
+                drop = System.Math.Min(drop, TileInstantDrop(p));
+            }
+            return drop;
+        }
+
+        public void DroptheBlock()
+        {
+            currentBlock.Move(BlockDropDistance(), 0);
+            PlaceBlock();
+        }
     }
 }

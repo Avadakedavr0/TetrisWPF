@@ -160,6 +160,9 @@ namespace TetrisWithWPF
                 case Key.C:
                     stateOfGame.HoldBlocks();
                     break;
+                case Key.Space:
+                    stateOfGame.DroptheBlock();
+                    break;
                 default:
                     return;
             }
