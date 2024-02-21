@@ -14,6 +14,15 @@
             {
                 currentBlock = value;
                 currentBlock.Reset(); // resets the block to its initial state whenever it's updated
+                // move the block down by 2 rows if nothing is in the way, so its like it the original game that the block spawns visible instead of headed above the gamegrid itself
+                for (int i = 0; i < 2; i++)
+                {
+                    currentBlock.Move(1, 0);
+                    if (!BlockFits())
+                    {
+                        currentBlock.Move(-1, 0);
+                    }
+                }
             }
         }
 

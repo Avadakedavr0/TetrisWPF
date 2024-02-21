@@ -147,9 +147,11 @@ namespace TetrisWithWPF
             await GameLoop();
         }
 
-        private void PlayAgain_Click(object sender, RoutedEventArgs e)
+        private async void PlayAgain_Click(object sender, RoutedEventArgs e)
         {
-
+            stateOfGame = new StateOfGame();
+            GameOver.Visibility = Visibility.Hidden;
+            await GameLoop();
         }
     }
 }
