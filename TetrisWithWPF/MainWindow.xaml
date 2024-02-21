@@ -28,7 +28,7 @@
             <Canvas x:Name="GameCanvas"
                     Grid.Row="1"
                     Grid.Column="1"
-                    Background="AliceBlue"
+                    Background="DarkCyan"
                     Width="250"
                     Height="500"
                     ClipToBounds="True"
@@ -65,6 +65,29 @@
                        Width="125"/>
         </StackPanel>
 
+        <Grid  x:Name="GameOver"
+               Background="#CC000000"
+               Grid.RowSpan="2"
+               Grid.ColumnSpan="3"
+               Visibility="Hidden">
+            <StackPanel HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <TextBlock Text="Game over"
+                           FontSize="38"
+                           TextAlignment="Center"
+                           Foreground="Aqua"/>
 
-    </Grid>
+                <TextBlock x:Name="TheFinalScoreText"
+                           Text="Score:"
+                           FontSize="30"
+                           TextAlignment="Center"
+                           Foreground="Aqua"/>
+                <Button Content="Try Again"
+                        Background="Cyan"
+                        Margin="0, 20, 0, 0"
+                        Padding="7"
+                        Click="PlayAgain_Click"/>
+            </StackPanel>
+        </Grid>
+     </Grid>
 </Window>
