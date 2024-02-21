@@ -102,6 +102,7 @@ namespace TetrisWithWPF
             DrawGrid(stateOfGame.GameGrid);
             DrawBlock(stateOfGame.CurrentBlock);
             DrawNextBlock(stateOfGame.QueueBlocks);
+            DrawHeldBlock(stateOfGame.HeldBlocks);
             ScoreText.Text = $"Score: {stateOfGame.Score * 100}"; // with each cleared line you get 100 points
         }
 
@@ -119,6 +120,19 @@ namespace TetrisWithWPF
             GameOver.Visibility = Visibility.Visible;
             TheFinalScoreText.Text = $"Total score: {stateOfGame.Score * 100}";
         }
+
+        private void DrawHeldBlock(Blocks heldBlock)
+        {
+            if (heldBlock == null)
+            {
+                HoldImage.Source = blockImages[0];
+            }
+            else
+            {
+                HoldImage.Source = blockImages[heldBlock.Id];
+            }
+        }
+
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
@@ -142,6 +156,9 @@ namespace TetrisWithWPF
                     break;
                 case Key.Z:
                     stateOfGame.RotateBlockCCW();
+                    break;
+                case Key.C:
+                    stateOfGame.HoldBlocks();
                     break;
                 default:
                     return;

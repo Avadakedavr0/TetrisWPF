@@ -1,4 +1,6 @@
-﻿namespace TetrisWithWPF
+﻿using System.Security.Policy;
+
+namespace TetrisWithWPF
 {
     // stateOfGame manages the current state of the Tetris game, including the game area, the current block, and the queue of upcoming blocks
     public class StateOfGame
@@ -34,12 +36,16 @@
         public bool GameOver { get; private set; }
         public int Score {  get; private set; }
 
+        public Blocks HeldBlocks { get; private set; }
+        public bool CanHoldBlocks { get; private set; }
+
         // constructor initializes the game state, creating the game area and the queue of blocks
         public StateOfGame()
         {
             GameGrid = new GameGrid(22, 10); // standard Tetris game area size
             QueueBlocks = new QueueBlocks(); // initializes the queue of blocks
             CurrentBlock = QueueBlocks.GetAndUpdate(); // sets the current block to the next block from the queue
+            CanHoldBlocks = true;
         }
 
         // checks if the current block fits in the game area without overlapping other blocks
@@ -55,6 +61,28 @@
             }
 
             return true;
+        }
+
+        public void HoldBlocks()
+        {
+            if (!CanHoldBlocks)
+            {
+                return;
+            }
+
+           if (HeldBlocks == null)
+            {
+                HeldBlocks = CurrentBlock;
+                CurrentBlock = QueueBlocks.GetAndUpdate();
+            }
+           else
+            {
+                Blocks tmp = CurrentBlock;
+                CurrentBlock = HeldBlocks;
+                HeldBlocks = tmp;
+            }
+
+            CanHoldBlocks = false;
         }
 
         // rotates the current block clockwise and if it doesn't fit after rotation it is rotated back
@@ -128,6 +156,7 @@
             {
                 // if the game is not over update the CurrentBlock with the next block from the queue
                 CurrentBlock = QueueBlocks.GetAndUpdate();
+                CanHoldBlocks = true;
             }
         }
 
