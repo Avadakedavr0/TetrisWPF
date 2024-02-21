@@ -38,6 +38,9 @@ namespace TetrisWithWPF
         };
 
         private readonly Image[,] imageControls; // 2d array
+        private readonly int maxDelay = 800;
+        private readonly int minDelay = 300;
+        private readonly int delayDecrease = 30;
 
         private StateOfGame stateOfGame = new StateOfGame();
 
@@ -125,7 +128,8 @@ namespace TetrisWithWPF
 
             while (!stateOfGame.GameOver)
             {
-                await Task.Delay(500);
+                int delay = Math.Max(minDelay, maxDelay - (stateOfGame.Score / 100) * delayDecrease);
+                await Task.Delay(delay);
                 stateOfGame.MoveBlockDown();
                 Draw(stateOfGame);
             }
