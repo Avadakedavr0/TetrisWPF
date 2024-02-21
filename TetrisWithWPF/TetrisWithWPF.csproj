@@ -5,6 +5,7 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>assets\Icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,6 +26,10 @@
     <None Remove="Assets\Tile7.png" />
     <None Remove="Assets\TileEmpty.png" />
     <None Remove="Assets\ZBlock.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="assets\Icon.ico" />
   </ItemGroup>
 
   <ItemGroup>

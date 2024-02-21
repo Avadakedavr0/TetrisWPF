@@ -18,3 +18,4 @@ C:\Users\Dylan\portfolio\TetrisWPF\TetrisWithWPF\obj\Debug\net6.0-windows\refint
 C:\Users\Dylan\portfolio\TetrisWPF\TetrisWithWPF\obj\Debug\net6.0-windows\TetrisWithWPF.pdb
 C:\Users\Dylan\portfolio\TetrisWPF\TetrisWithWPF\obj\Debug\net6.0-windows\TetrisWithWPF.genruntimeconfig.cache
 C:\Users\Dylan\portfolio\TetrisWPF\TetrisWithWPF\obj\Debug\net6.0-windows\ref\TetrisWithWPF.dll
+C:\Users\Dylan\portfolio\TetrisWPF\TetrisWithWPF\obj\Debug\net6.0-windows\TetrisWithWPF_Content.g.cs
