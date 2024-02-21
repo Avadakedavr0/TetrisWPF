@@ -32,6 +32,7 @@
         public QueueBlocks QueueBlocks { get; }
         // flag indicating whether the game is over
         public bool GameOver { get; private set; }
+        public int Score {  get; private set; }
 
         // constructor initializes the game state, creating the game area and the queue of blocks
         public StateOfGame()
@@ -115,7 +116,7 @@
                 GameGrid[p.Row, p.Column] = currentBlock.Id;
             }
             // clears any rows that are now full
-            GameGrid.ClearFullRows();
+            Score += GameGrid.ClearFullRows();
 
             // checks if the game is over after placing the block
             if (IsGameOver())

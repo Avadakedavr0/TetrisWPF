@@ -102,6 +102,7 @@ namespace TetrisWithWPF
             DrawGrid(stateOfGame.GameGrid);
             DrawBlock(stateOfGame.CurrentBlock);
             DrawNextBlock(stateOfGame.QueueBlocks);
+            ScoreText.Text = $"Score: {stateOfGame.Score * 100}"; // with each cleared line you get 100 points
         }
 
         private async Task GameLoop()
@@ -116,6 +117,7 @@ namespace TetrisWithWPF
             }
 
             GameOver.Visibility = Visibility.Visible;
+            TheFinalScoreText.Text = $"Total score: {stateOfGame.Score * 100}";
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
