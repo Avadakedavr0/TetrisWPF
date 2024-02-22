@@ -79,6 +79,17 @@ namespace TetrisWithWPF
             return localImageControls;
         }
 
+        private void StartGameButton_Click(object sender, RoutedEventArgs e)
+        {
+            StartScreen.Visibility = Visibility.Collapsed; // hide the start screen
+            StartGame(); // call the method to start the game
+        }
+
+        private async void StartGame()
+        {
+            await GameLoop(); // start the game loop
+        }
+
         private void DrawGrid(GameGrid grid)
         {
             for (int r = 0; r < grid.Rows; r++)
@@ -197,7 +208,6 @@ namespace TetrisWithWPF
         private async void GameCanvas_Loaded(object sender, RoutedEventArgs e)
         {
             LoadHighScores();
-            await GameLoop();
         }
 
         private async void PlayAgain_Click(object sender, RoutedEventArgs e)
