@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "EVA+q1q33liQtd5XIDiww4oC2fycuvZs3n/pDdkrjlkAJNkPjlGdjWNYUfuePspniuk+gX6IfP7aGR+r/yyIOg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Dylan\\portfolio\\TetrisWPF\\TetrisWithWPF\\TetrisWithWPF.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Dylan\\.nuget\\packages\\microsoft.net.build.containers\\8.0.200\\microsoft.net.build.containers.8.0.200.nupkg.sha512",
+    "C:\\Users\\Dylan\\.nuget\\packages\\microsoft.netcore.app.runtime.linux-x64\\6.0.27\\microsoft.netcore.app.runtime.linux-x64.6.0.27.nupkg.sha512",
+    "C:\\Users\\Dylan\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.linux-x64\\6.0.27\\microsoft.aspnetcore.app.runtime.linux-x64.6.0.27.nupkg.sha512",
+    "C:\\Users\\Dylan\\.nuget\\packages\\microsoft.netcore.app.host.linux-x64\\6.0.27\\microsoft.netcore.app.host.linux-x64.6.0.27.nupkg.sha512"
+  ],
+  "logs": []
+}

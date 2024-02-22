@@ -44,7 +44,7 @@
         <TextBlock x:Name="ScoreText"
                    Grid.Row="0"
                    Grid.Column="1"
-                   Text="The Score:"
+                   Text="Current Score:"
                    Margin="0, 10"
                    TextAlignment="Center"/>
         <StackPanel Grid.Row="1"
@@ -81,13 +81,13 @@
                 <TextBlock Text="Game over"
                            FontSize="38"
                            TextAlignment="Center"
-                           Foreground="Aqua"/>
+                           Foreground="Snow"/>
 
                 <TextBlock x:Name="TheFinalScoreText"
                            Text="Score:"
                            FontSize="30"
                            TextAlignment="Center"
-                           Foreground="Aqua"/>
+                           Foreground="Snow"/>
                 <Button Content="Try Again"
                         Background="Cyan"
                         Margin="0, 20, 0, 0"

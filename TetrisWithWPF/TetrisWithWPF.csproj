@@ -33,6 +33,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Build.Containers" Version="8.0.200" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Assets\Dall-E-Generated-Background.png" />
     <Resource Include="Assets\EmptyBlock.png" />
     <Resource Include="Assets\IBlock.png" />

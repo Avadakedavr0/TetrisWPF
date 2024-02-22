@@ -168,7 +168,7 @@ namespace TetrisWithWPF
                 case Key.Down:
                     stateOfGame.MoveBlockDown();
                     break;
-                case Key.Up:
+                case Key.X:
                     stateOfGame.RotateBlockCW();
                     break;
                 case Key.Z:
@@ -177,7 +177,7 @@ namespace TetrisWithWPF
                 case Key.C:
                     stateOfGame.HoldBlocks();
                     break;
-                case Key.Space:
+                case Key.Up:
                     stateOfGame.DroptheBlock();
                     break;
                 default:

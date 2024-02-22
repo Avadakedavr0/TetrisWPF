@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "fnXw6cc0R9N3G+H8TLiErXI35K+d9fjt+BqJsGwpNNIsZcI0a+/fGx/2bHxl7/CkyFpb1+HQ/eiSCLslSrJtyA==",
+  "dgSpecHash": "WOiBYjFfghn/Hg8KjLnNeyP1g9F65lCwJ4fAOmUkRluLbjMrGAXAZ71rHCGm7OOPhEv9NP4mAbJfKg25NwLbNw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Dylan\\portfolio\\TetrisWPF\\TetrisWithWPF\\TetrisWithWPF.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Dylan\\.nuget\\packages\\microsoft.net.build.containers\\8.0.200\\microsoft.net.build.containers.8.0.200.nupkg.sha512"
+  ],
   "logs": []
 }
