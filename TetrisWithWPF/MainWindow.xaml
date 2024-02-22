@@ -8,9 +8,9 @@
         Title="Tetris-Space" Height="600" Width="800"
         MinHeight="600"
         MinWidth="600"
-        Foreground="Snow"
-        FontFamily="Andale mono"
-        FontSize="30"
+        Foreground="PowderBlue"
+        FontFamily="Consolas"
+        FontSize="28"
         KeyDown="Window_KeyDown">
     <Grid>
         <Grid.RowDefinitions>
