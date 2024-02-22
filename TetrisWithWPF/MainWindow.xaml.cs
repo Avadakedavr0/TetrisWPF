@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -41,7 +43,10 @@ namespace TetrisWithWPF
         private readonly int maxDelay = 800;
         private readonly int minDelay = 300;
         private readonly int delayDecrease = 30;
-
+        private List<int> highScores = new List<int>();
+        private string highScoresFilePath = System.IO.Path.Combine(
+        Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+        "TetrisWithWPF_HighScores.txt");
         private StateOfGame stateOfGame = new StateOfGame();
 
         public MainWindow()
@@ -134,6 +139,7 @@ namespace TetrisWithWPF
                 Draw(stateOfGame);
             }
 
+            OnGameOver();
             GameOver.Visibility = Visibility.Visible;
             TheFinalScoreText.Text = $"Total score: {stateOfGame.Score * 100}";
         }
@@ -190,6 +196,7 @@ namespace TetrisWithWPF
 
         private async void GameCanvas_Loaded(object sender, RoutedEventArgs e)
         {
+            LoadHighScores();
             await GameLoop();
         }
 
@@ -198,6 +205,37 @@ namespace TetrisWithWPF
             stateOfGame = new StateOfGame();
             GameOver.Visibility = Visibility.Hidden;
             await GameLoop();
+        }
+
+        public void UpdateHighScores(int newScore)
+        {
+            highScores.Add(newScore);
+            highScores.Sort((a, b) => b.CompareTo(a));
+            highScores = highScores.Take(10).ToList();
+            HighScoreList.ItemsSource = highScores.Select(score => $"Score: {score}").ToList();
+        }
+
+        private void OnGameOver()
+        {
+            int finalScore = stateOfGame.Score * 100;
+            UpdateHighScores(finalScore);
+            SaveHighScores();
+        }
+        private void SaveHighScores()
+        {
+            string highScoresText = string.Join(Environment.NewLine, highScores);
+            System.IO.File.WriteAllText(highScoresFilePath, highScoresText);
+        }
+
+        private void LoadHighScores()
+        {
+            if (System.IO.File.Exists(highScoresFilePath))
+            {
+                string[] lines = System.IO.File.ReadAllLines(highScoresFilePath);
+                highScores = lines.Select(int.Parse).ToList();
+            }
+
+            HighScoreList.ItemsSource = highScores.Select(score => $"Score: {score}").ToList();
         }
     }
 }

@@ -28,7 +28,7 @@
             <ImageBrush ImageSource="Assets/Dall-E-Generated-Background.png"/>
         </Grid.Background>
 
-        <Image Margin="38,13,74,320" Grid.Row="1">
+        <Image Margin="26,49,15,312" Grid.Row="1">
             <Image.Source>
                 <BitmapImage DecodePixelWidth="300" UriSource="/assets/GameInstructions.png" />
             </Image.Source>
@@ -77,6 +77,30 @@
                        Width="125"/>
         </StackPanel>
 
+        <StackPanel Grid.Row="1"
+                    Grid.Column="2"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Right"
+                    Margin="15">
+            <TextBlock Text="Highscores:"
+                       Foreground="PowderBlue"
+                       FontSize="25"
+                       Margin="0, 30, 20, 10"
+                       TextAlignment="Right"/>
+            <ListBox x:Name="HighScoreList"
+                       BorderThickness="0"
+                       Background="Transparent"
+                       Width="200"
+                       Height="200"
+                       Foreground="PowderBlue">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Vertical"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+        </StackPanel>
+
         <Grid  x:Name="GameOver"
                Background="#CC000000"
                Grid.RowSpan="2"
@@ -87,13 +111,13 @@
                 <TextBlock Text="Game over"
                            FontSize="38"
                            TextAlignment="Center"
-                           Foreground="Snow"/>
+                           Foreground="PowderBlue"/>
 
                 <TextBlock x:Name="TheFinalScoreText"
                            Text="Score:"
                            FontSize="30"
                            TextAlignment="Center"
-                           Foreground="Snow"/>
+                           Foreground="PowderBlue"/>
                 <Button Content="Try Again"
                         Background="Cyan"
                         Margin="0, 20, 0, 0"
