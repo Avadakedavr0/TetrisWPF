@@ -28,6 +28,12 @@
             <ImageBrush ImageSource="Assets/Dall-E-Generated-Background.png"/>
         </Grid.Background>
 
+        <Image Margin="38,13,74,320" Grid.Row="1">
+            <Image.Source>
+                <BitmapImage DecodePixelWidth="300" UriSource="/assets/GameInstructions.png" />
+            </Image.Source>
+        </Image>
+
         <Viewbox Grid.Row="1"
                  Grid.Column="1"
                  Margin="0,0,0,20">
