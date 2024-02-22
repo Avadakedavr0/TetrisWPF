@@ -1,10 +1,11 @@
 C:\Users\Dylan\portfolio\TetrisWPF\TetrisWithWPF\bin\Debug\net6.0-windows\TetrisWithWPF.exe
+C:\Users\Dylan\portfolio\TetrisWPF\TetrisWithWPF\bin\Debug\net6.0-windows\TetrisWithWPF.dll
 C:\Users\Dylan\portfolio\TetrisWPF\TetrisWithWPF\bin\Debug\net6.0-windows\TetrisWithWPF.deps.json
 C:\Users\Dylan\portfolio\TetrisWPF\TetrisWithWPF\bin\Debug\net6.0-windows\TetrisWithWPF.runtimeconfig.json
-C:\Users\Dylan\portfolio\TetrisWPF\TetrisWithWPF\bin\Debug\net6.0-windows\TetrisWithWPF.dll
 C:\Users\Dylan\portfolio\TetrisWPF\TetrisWithWPF\bin\Debug\net6.0-windows\TetrisWithWPF.pdb
 C:\Users\Dylan\portfolio\TetrisWPF\TetrisWithWPF\obj\Debug\net6.0-windows\MainWindow.g.cs
 C:\Users\Dylan\portfolio\TetrisWPF\TetrisWithWPF\obj\Debug\net6.0-windows\App.g.cs
+C:\Users\Dylan\portfolio\TetrisWPF\TetrisWithWPF\obj\Debug\net6.0-windows\TetrisWithWPF_Content.g.cs
 C:\Users\Dylan\portfolio\TetrisWPF\TetrisWithWPF\obj\Debug\net6.0-windows\TetrisWithWPF_MarkupCompile.cache
 C:\Users\Dylan\portfolio\TetrisWPF\TetrisWithWPF\obj\Debug\net6.0-windows\TetrisWithWPF_MarkupCompile.lref
 C:\Users\Dylan\portfolio\TetrisWPF\TetrisWithWPF\obj\Debug\net6.0-windows\MainWindow.baml
@@ -18,4 +19,3 @@ C:\Users\Dylan\portfolio\TetrisWPF\TetrisWithWPF\obj\Debug\net6.0-windows\refint
 C:\Users\Dylan\portfolio\TetrisWPF\TetrisWithWPF\obj\Debug\net6.0-windows\TetrisWithWPF.pdb
 C:\Users\Dylan\portfolio\TetrisWPF\TetrisWithWPF\obj\Debug\net6.0-windows\TetrisWithWPF.genruntimeconfig.cache
 C:\Users\Dylan\portfolio\TetrisWPF\TetrisWithWPF\obj\Debug\net6.0-windows\ref\TetrisWithWPF.dll
-C:\Users\Dylan\portfolio\TetrisWPF\TetrisWithWPF\obj\Debug\net6.0-windows\TetrisWithWPF_Content.g.cs

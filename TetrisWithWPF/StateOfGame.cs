@@ -1,6 +1,4 @@
-﻿using System.Security.Policy;
-
-namespace TetrisWithWPF
+﻿namespace TetrisWithWPF
 {
     // stateOfGame manages the current state of the Tetris game, including the game area, the current block, and the queue of upcoming blocks
     public class StateOfGame
@@ -34,9 +32,11 @@ namespace TetrisWithWPF
         public QueueBlocks QueueBlocks { get; }
         // flag indicating whether the game is over
         public bool GameOver { get; private set; }
-        public int Score {  get; private set; }
-
+        // holds the score of the game
+        public int Score { get; private set; }
+        // holds the block that the player can use later
         public Blocks HeldBlocks { get; private set; }
+        // determines if the player can hold blocks
         public bool CanHoldBlocks { get; private set; }
 
         // constructor initializes the game state, creating the game area and the queue of blocks
@@ -45,7 +45,7 @@ namespace TetrisWithWPF
             GameGrid = new GameGrid(22, 10); // standard Tetris game area size
             QueueBlocks = new QueueBlocks(); // initializes the queue of blocks
             CurrentBlock = QueueBlocks.GetAndUpdate(); // sets the current block to the next block from the queue
-            CanHoldBlocks = true;
+            CanHoldBlocks = true; // allows holding blocks at the start
         }
 
         // checks if the current block fits in the game area without overlapping other blocks
@@ -63,26 +63,27 @@ namespace TetrisWithWPF
             return true;
         }
 
+        // allows the player to hold onto a block to use later
         public void HoldBlocks()
         {
-            if (!CanHoldBlocks)
+            if (!CanHoldBlocks) // if holding is not allowed, exit the function
             {
                 return;
             }
 
-           if (HeldBlocks == null)
+            if (HeldBlocks == null)
             {
-                HeldBlocks = CurrentBlock;
-                CurrentBlock = QueueBlocks.GetAndUpdate();
+                HeldBlocks = CurrentBlock; // hold the current block
+                CurrentBlock = QueueBlocks.GetAndUpdate();  // get a new block from the queue
             }
-           else
+            else
             {
-                Blocks tmp = CurrentBlock;
-                CurrentBlock = HeldBlocks;
-                HeldBlocks = tmp;
+                Blocks tmp = CurrentBlock; // temporarily store the current block
+                CurrentBlock = HeldBlocks; // switch to the held block
+                HeldBlocks = tmp; // update the held block
             }
 
-            CanHoldBlocks = false;
+            CanHoldBlocks = false; // disallow holding another block until the next one is placed
         }
 
         // rotates the current block clockwise and if it doesn't fit after rotation it is rotated back
@@ -173,30 +174,41 @@ namespace TetrisWithWPF
             }
         }
 
+        // method calculates the maximum number of rows the current tile can drop until it would collide with another tile or the bottom of the grid
         private int TileInstantDrop(PositionOffBlocks p)
         {
-            int drop = 0;
+            int drop = 0; // start with a drop distance of 0
+            // as long as the cell below the current position is empty increment the drop distance
             while (GameGrid.IsEmptyCell(p.Row + drop + 1, p.Column))
             {
                 drop++;
             }
+            // return the total drop distance calculated
             return drop;
         }
 
+        // determines the maximum distance the current block can drop and does this by checking the drop distance for each tile in the block
+        // then taking the smallest distance as the block moves as an unit
         public int BlockDropDistance()
         {
-            int drop = GameGrid.Rows;
+            int drop = GameGrid.Rows; // start with the maximum possible drop distance
 
+            // loop through each tile position in the current block
             foreach (PositionOffBlocks p in CurrentBlock.TilePositions())
             {
+                // find the smallest drop distance from all tile positions
                 drop = System.Math.Min(drop, TileInstantDrop(p));
             }
+            // and return the smallest drop distance
             return drop;
         }
 
+        // drops the current block down instantly to the lowest available position on the grid
         public void DroptheBlock()
         {
+            // move the block down by the maximum available drop distance
             currentBlock.Move(BlockDropDistance(), 0);
+            // then once the block has been moved down place it on the grid
             PlaceBlock();
         }
     }
