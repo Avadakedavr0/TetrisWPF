@@ -106,7 +106,7 @@
                        BorderThickness="0"
                        Background="Transparent"
                        Width="200"
-                       Height="151"
+                       Height="140"
                        Foreground="PowderBlue">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>

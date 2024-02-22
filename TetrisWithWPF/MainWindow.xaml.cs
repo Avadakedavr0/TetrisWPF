@@ -219,10 +219,16 @@ namespace TetrisWithWPF
 
         public void UpdateHighScores(int newScore)
         {
-            highScores.Add(newScore);
-            highScores.Sort((a, b) => b.CompareTo(a));
-            highScores = highScores.Take(10).ToList();
-            HighScoreList.ItemsSource = highScores.Select(score => $"Score: {score}").ToList();
+            if (newScore > 0 && !highScores.Contains(newScore))
+            {
+                highScores.Add(newScore);
+                highScores.Sort((a, b) => b.CompareTo(a));
+                if (highScores.Count > 10)
+                {
+                    highScores = highScores.Take(10).ToList();
+                }
+                HighScoreList.ItemsSource = highScores.Select(score => $"Score: {score}").ToList();
+            }
         }
 
         private void OnGameOver()
